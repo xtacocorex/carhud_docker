@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "SETTING UP SOURCE"
+source jethro/oe-init-build-env carhud/build

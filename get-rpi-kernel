@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "GETTING RASPBERRY PI KERNEL SOURCE"
+bitbake -c fetch linux-raspberrypi

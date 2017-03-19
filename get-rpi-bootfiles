@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "GETTING BCM2835 BOOT FILES"
+bitbake -c fetch bcm2835-bootfiles

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+pushd ~/projects/carhud/embeddedpi
+
+echo "STARTING DOCKER: TACOS-YOCTO"
+docker run -it --interactive --workdir /home/build --volume ${PWD}/carhud:/home/build/shared tacos-yocto
