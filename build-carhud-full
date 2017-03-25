@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "BUILDING CARHUD 7 SEGMENT LED FULL IMAGE"
+bitbake carhud7seg-full-image

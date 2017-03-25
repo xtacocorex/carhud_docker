@@ -43,6 +43,9 @@ ADD firmware.inc /home/build/jethro/meta-raspberrypi/recipes-bsp/common
 ADD do-source /home/build
 ADD get-rpi-bootfiles /home/build/carhud/build
 ADD get-rpi-kernel /home/build/carhud/build
+ADD build-carhud-full /home/build/carhud/build
+ADD build-carhud-debug /home/build/carhud/build
 
+# SET ENVIRONMENT VARIABLES
 ENV WORKSPACE /home/build
 WORKDIR /home/build
