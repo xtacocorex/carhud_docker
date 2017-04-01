@@ -3,4 +3,5 @@
 pushd ~/projects/carhud/yocto-out
 
 echo "STARTING DOCKER: TACOS-YOCTO"
-docker run -it --interactive --workdir /home/build --volume ${PWD}:/home/build/shared tacos-yocto
+# NEED PRIVILEGED FLAG FOR LOOPBACK DEVICE
+docker run -it --interactive --privileged --workdir /home/build --volume ${PWD}:/home/build/shared tacos-yocto

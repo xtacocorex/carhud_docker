@@ -3,11 +3,12 @@ FROM debian:jessie
 RUN apt-get update && \
 	apt-get install -yq sudo build-essential git \
 	  python python3 man bash diffstat gawk chrpath wget cpio \
-	  texinfo lzop apt-utils bc screen libncurses5-dev locales \
-          libc6-dev-i386 nano && \
+	  texinfo lzop apt-utils bc screen libncurses5-dev locales dosfstools \
+          libc6-dev-i386 nano curl vim && \
 	rm -rf /var/lib/apt-lists/*
 
 RUN useradd -ms /bin/bash -p build build && \
+    echo "build:build" | chpasswd && \
 	usermod -aG sudo build
 
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
@@ -36,6 +37,9 @@ RUN mkdir -p /home/build/carhud/build/conf
 ADD bblayers.conf /home/build/carhud/build/conf
 ADD local.conf /home/build/carhud/build/conf
 
+# MAKE TEMPORARY MOUNT POINT
+RUN mkdir -p /media/card
+
 # OVERWRITE meta-raspberrypi/recipes-bsp/common/firmware.inc
 ADD firmware.inc /home/build/jethro/meta-raspberrypi/recipes-bsp/common
 
@@ -45,7 +49,11 @@ ADD get-rpi-bootfiles /home/build/carhud/build
 ADD get-rpi-kernel /home/build/carhud/build
 ADD build-carhud-full /home/build/carhud/build
 ADD build-carhud-debug /home/build/carhud/build
+ADD create-debug-image home/build/carhud/build
+ADD create-full-image home/build/carhud/build
 
 # SET ENVIRONMENT VARIABLES
 ENV WORKSPACE /home/build
 WORKDIR /home/build
+
+ENTRYPOINT /bin/bash

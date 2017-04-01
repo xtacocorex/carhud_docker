@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "CREATING IMAGE FILE FOR CARHUD 7 SEGMENT LED FULL IMAGE"
+pushd /home/build/carhud/meta-rpi-carhud/scripts
+create_sdcard_images.sh carhud7seg-ful 1
+popd

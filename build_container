@@ -1,0 +1,9 @@
+#!/bin/sh
+
+echo "BUILDING CARHUD CREATOR DOCKER CONTIANER"
+EL_CONTAINER=tacos-yocto
+
+docker inspect ${EL_CONTAINER} > /dev/null
+if [ ! "$?" = "0" ]; then
+	docker build -f Dockerfile -t ${EL_CONTAINER} --rm $(pwd)
+fi
